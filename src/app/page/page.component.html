@@ -1,0 +1,66 @@
+<main>
+  <header>
+    <img src="../../assets/RSLogo.png">
+  </header>
+
+  <div class="div-1">
+    <p>კითხვების შემთხვევაში, მოგვწერეთ <a href="mailto:api-support@rs.ge">api-support@rs.ge</a></p>
+  </div>
+
+  <div class="div-2">
+
+    <div class="div-2-1">
+      <ul>
+        <li>
+          <a [class.active-tab-color]="id === 'prots'" (click)="tabChange('prots')">პროტოკოლები</a>
+        </li>
+        <li>
+          <a [class.active-tab-color]="id === 'apps'" (click)="tabChange('apps')">აპლიკაციები</a>
+        </li>
+      </ul>
+
+
+      <!-- პროტოკოლები -->
+
+      <div class="protocols" *ngIf="id === 'prots'">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input [(ngModel)]="searchText" type="search" placeholder="ძებნა პროტოკოლში">
+        </div>
+        <div (click)="onParentClick()" class="protocol" *ngFor="let protocol of protocols | filter:searchText">
+          <img class="adobe-acrobat" src="../../assets/adobe-acrobat-icon.png" alt="">
+          <div class="content">
+            <p class="title">{{protocol.title}}</p>
+            <hr *ngIf="protocol.postman != ''">
+            <div class="content-1" *ngIf="protocol.postman != ''" (click)="onChildClick()">
+              <img class="postman-img" src="../../assets/postman-2.png" alt="">
+              <p class="postman">{{protocol.postman}}</p>
+            </div>
+            <p class="update">{{protocol.update}}</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- აპლიკაციები -->
+
+      <div class="apps" *ngIf="id === 'apps'">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input [(ngModel)]="searchText" type="search" placeholder="ძებნა აპლიკაციაში">
+        </div>
+        <div class="app" *ngFor="let app of apps | filter:searchText">
+          <i class="fa-solid fa-layer-group"></i>
+          <div class="content">
+            <p class="title">{{app.title}}</p>
+            <p class="update">{{app.update}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="feedback">
+    უკუკავშირი
+  </div>
+</main>
