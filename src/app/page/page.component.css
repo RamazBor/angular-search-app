@@ -187,7 +187,7 @@ hr {
 .feedback {
   position: fixed;
   top: 55%;
-  right: -6.5%;
+  right: -80px;
   width: 160px;
   height: 110px;
   padding-top: 70px;
@@ -202,5 +202,25 @@ hr {
 }
 .feedback:hover {
   background: #1E305C;
-  right: -5.3%;
+  right: -65px;
+}
+
+@media screen and (max-width: 420px) {
+  .div-2-1 ul {
+    flex-direction: column;
+  }
+  .div-2-1 ul li {
+    margin-bottom: 0;
+  }
+
+  .search {
+    padding-left: 25px;
+  }
+
+  .search i {
+    font-size: 18px;
+  }
+  .search input {
+    font-size: 18px;
+  }
 }
